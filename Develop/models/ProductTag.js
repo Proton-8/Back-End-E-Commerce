@@ -6,9 +6,35 @@ class ProductTag extends Model {}
 
 ProductTag.init(
   {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true
+    },
+  
+    product_id: {
+      type: DataTypes.INTEGER,
+      // needed?? 
+      allowNull: false,
+          //  caps needed here?? 
+          model: 'product',
+          key: 'id',
+          // needed ?
+          unique: false
+    },
 
-
-    
+    tag_id: {
+      type: DataTypes.INTEGER,
+      // needed ??
+      allowNull: false,
+          //  caps needed here?? 
+          model: 'tag',
+          key: 'id',
+          // needed ??
+          unique: false
+    },
+   
   },
   {
     sequelize,
