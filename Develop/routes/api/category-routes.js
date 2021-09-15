@@ -5,11 +5,11 @@ const { Category, Product } = require('../../models');
 
 router.get('/', async (req, res) => {
   try {
-    const categoryData = await Category.findAll({
+    const categoriesData = await Category.findAll({
       include:[Product]
     });
     // everything is good---
-    res.status(200).json(categoryData);
+    res.status(200).json(categoriesData);
 
   } catch (err) {
     // internal server error 
@@ -17,17 +17,16 @@ router.get('/', async (req, res) => {
   }
 });
 
+  // find one category by its `id` value
 router.get('/:id', async (req, res) => {
 
-  // find one category by its `id` value
-//  ???  is this right??
   try {
-    const userData = await User.findByPk(req.params.id);
-    if (!userData) {
-      res.status(404).json({ message: 'No user with this id!' });
+    const categoryData = await Category.findByPk(req.params.id);
+    if (!categoryData) {
+      res.status(404).json({ message: 'No Category with this id!' });
       return;
     }
-    res.status(200).json(userData);
+    res.status(200).json(categoryData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -37,7 +36,7 @@ router.get('/:id', async (req, res) => {
 router.post('/', (req, res) => {
 // is this right??
 try {
-  const userData = await User.create({
+  const categoryData = await Category.create({
     username: req.body.username,
     email: req.body.email,
     password: req.body.password,
