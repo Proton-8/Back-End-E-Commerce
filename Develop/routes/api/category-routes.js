@@ -1,29 +1,28 @@
-const router = require('express').Router();
-const { Category, Product } = require('../../models');
+const router = require("express").Router();
+const { Category, Product } = require("../../models");
 
 // The `/api/categories` endpoint
 
-router.get('/', async (req, res) => {
+// find all categories
+router.get("/", async (req, res) => {
   try {
     const categoriesData = await Category.findAll({
-      include:[Product]
+      include: [Product],
     });
     // everything is good---
     res.status(200).json(categoriesData);
-
   } catch (err) {
-    // internal server error 
+    // internal server error
     res.status(500).json(err);
   }
 });
 
-  // find one category by its `id` value
-router.get('/:id', async (req, res) => {
-
+// find one category by its `id` value
+router.get("/:id", async (req, res) => {
   try {
     const categoryData = await Category.findByPk(req.params.id);
     if (!categoryData) {
-      res.status(404).json({ message: 'No Category with this id!' });
+      res.status(404).json({ message: "No Category with this id!" });
       return;
     }
     res.status(200).json(categoryData);
@@ -33,24 +32,22 @@ router.get('/:id', async (req, res) => {
   // be sure to include its associated Products
 });
 
-router.post('/', (req, res) => {
-// is this right??
-try {
-  const categoryData = await Category.create({
-    username: req.body.username,
-    email: req.body.email,
-    password: req.body.password,
-  });
-  res.status(200).json(userData);
-} catch (err) {
-  res.status(400).json(err);
-}
-
-
-  // create a new category
+// create a new category
+router.post("/", (req, res) => {
+  try {
+    const categoryData = await Category.create({
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password,
+    });
+    res.status(200).json(userData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
 });
 
-router.put('/:id', async (req, res) => {
+// update a category by its `id` value
+router.put("/:id", async (req, res) => {
   try {
     const userData = await User.update(req.body, {
       where: {
@@ -58,20 +55,17 @@ router.put('/:id', async (req, res) => {
       },
     });
     if (!userData[0]) {
-      res.status(404).json({ message: 'No user with this id!' });
+      res.status(404).json({ message: "No Category with this id!" });
       return;
     }
     res.status(200).json(userData);
   } catch (err) {
     res.status(500).json(err);
   }
-
-  // update a category by its `id` value
 });
 
 // delete a category by its `id` value
-// is this correct??
-router.delete('/:id', async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const userData = await User.destroy({
       where: {
@@ -79,14 +73,13 @@ router.delete('/:id', async (req, res) => {
       },
     });
     if (!userData) {
-      res.status(404).json({ message: 'No user with this id!' });
+      res.status(404).json({ message: "No Category with this id!" });
       return;
     }
     res.status(200).json(userData);
   } catch (err) {
     res.status(500).json(err);
   }
-
 });
 
 module.exports = router;
