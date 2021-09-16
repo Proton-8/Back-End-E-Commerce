@@ -46,23 +46,16 @@ router.get("/:id", async (req, res) => {
 });
 
 
-
-
   // create a new tag
 router.post('/', (req, res) => {
-
-
 
 
 });
 
   // update a tag's name by its `id` value
 router.put('/:id', (req, res) => {
-
-
   
 });
-
 
   // delete on tag by its `id` value
 
