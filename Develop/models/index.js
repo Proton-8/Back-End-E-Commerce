@@ -4,45 +4,29 @@ const Category = require('./Category');
 const Tag = require('./Tag');
 const ProductTag = require('./ProductTag');
 
-// information from mini-project
 
-Traveller.belongsToMany(Location, {
-  // Define the third table needed to store the foreign keys
-  through: {
-    model: Trip,
-    unique: false
-  },
-  // Define an alias for when data is retrieved
-  as: 'planned_trips'
-});
-
-Location.belongsToMany(Traveller, {
-  // Define the third table needed to store the foreign keys
-  through: {
-    model: Trip,
-    unique: false
-  },
-  // Define an alias for when data is retrieved
-  as: 'location_travellers'
-});
-
-
-
-
-
+Product.belongsTo(Category, {
+  foreignKey: 'category_id'
+})
 
 // Products belongsTo Category
-
-
-
-
-
-
-
+Product.belongsTo(Category, {
+  foreignKey: 'category_id',
+});
 
 // Categories have many Products
+Product.belongsToMany(Product, {
+  foreignKey: 'category_id',
+  onDelete: 'CASCADE'
+});
 
 // Products belongToMany Tags (through ProductTag)
+Product.belongsToMany(Tag, {
+  through: {
+    model: ProductTag,
+    unique: false
+  },
+});
 
 // Tags belongToMany Products (through ProductTag)
 
