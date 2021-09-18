@@ -126,12 +126,12 @@ Your database should contain the following four models, including the requiremen
 
 
 
-<h2>  Examples : </h2>
+<h2>  Startup and GET ALL Demo : </h2>
 
-<img src="Develop\Gifs\HW-13 serv-cat-products.gif  " alt="Test DEMO GIF">
+<img src="Develop\Gifs\Start-Get All.gif " alt="Startup and all three GET All DEMO GIF">
 
 </p>
-<h2>Screenshot of Startup</h2>
+<h2>Get Singles Demo</h2>
 
-<img src="assets\Startup.jpg" alt=" DEMO screenshot">
+<img src="Develop\Gifs\Get One.gif" alt=" DEMO screenshot">
 <p>
