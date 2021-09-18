@@ -51,12 +51,12 @@ router.post("/", async (req, res) => {
 // update a category by its `id` value
 router.put("/:id", async (req, res) => {
   try {
-    const userData = await User.update(req.body, {
+    const categoryData = await Category.update(req.body, {
       where: {
         id: req.params.id,
       },
     });
-    if (!userData[0]) {
+    if (!categoryData[0]) {
       res.status(404).json({
         message: `Sorry, the Category was not updated due to one of the following reasons:
         1. Category doesn't exist
@@ -66,7 +66,7 @@ router.put("/:id", async (req, res) => {
       return;
     }
       // everything is good---
-    res.status(200).json(userData);
+    res.status(200).json(categoryData);
   } catch (err) {
     // internal server error
     res.status(500).json(err);
@@ -76,12 +76,12 @@ router.put("/:id", async (req, res) => {
 // delete a category by its `id` value
 router.delete("/:id", async (req, res) => {
   try {
-    const userData = await User.destroy({
+    const categoryData = await Category.destroy({
       where: {
         id: req.params.id,
       },
     });
-    if (!userData) {
+    if (!categoryData) {
       res.status(404).json({ message: "No Category with this id!" });
       return;
     }

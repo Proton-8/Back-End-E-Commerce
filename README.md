@@ -131,7 +131,7 @@ Your database should contain the following four models, including the requiremen
 </p>
 <p>
 <h2>  Seeding the Database Demo : </h2>
-<img src="Develop\Gifs\Seeding Database.gif " alt="Seeding the database demo">
+<img src="Develop\Gifs\Seed Data.gif " alt="Seeding the database demo">
 </p>
 <p>
 <h2>  Startup and GET ALL Demo : </h2>
