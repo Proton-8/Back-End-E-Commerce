@@ -19,27 +19,30 @@ router.get("/", async (req, res) => {
 
 // find one category by its `id` value
 router.get("/:id", async (req, res) => {
-  try {
-    const categoryData = await Category.findByPk(req.params.id);
+  try {    
+    const categoryData = await Category.findByPk(req.params.id, {include: [Product ],
+    }); 
+
     if (!categoryData) {
       res.status(404).json({ message: "No Category with this id!" });
       return;
     }
+      // everything is good---
     res.status(200).json(categoryData);
   } catch (err) {
+
+    // internal server error
     res.status(500).json(err);
   }
-  // be sure to include its associated Products
+
 });
 
 // create a new category
 router.post("/", async (req, res) => {
   try {
-    const categoryData = await Category.create({
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password,
-    });
+    const categoryData = await Category.create(req.body);
+      
+      // everything is good---
     res.status(200).json(userData);
   } catch (err) {
     res.status(400).json(err);
@@ -55,11 +58,18 @@ router.put("/:id", async (req, res) => {
       },
     });
     if (!userData[0]) {
-      res.status(404).json({ message: "No Category with this id!" });
+      res.status(404).json({
+        message: `Sorry, the Category was not updated due to one of the following reasons:
+        1. Category doesn't exist
+        2. Category not provided
+        3. Category is the same as the current Category`,
+    })
       return;
     }
+      // everything is good---
     res.status(200).json(userData);
   } catch (err) {
+    // internal server error
     res.status(500).json(err);
   }
 });
@@ -76,8 +86,10 @@ router.delete("/:id", async (req, res) => {
       res.status(404).json({ message: "No Category with this id!" });
       return;
     }
-    res.status(200).json(userData);
+      // everything is good---
+    res.status(200).json({ message: `Category with id was deleted successfully.` });
   } catch (err) {
+    // internal server error
     res.status(500).json(err);
   }
 });
