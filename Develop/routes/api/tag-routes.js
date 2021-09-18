@@ -43,14 +43,6 @@ router.get('/:id', async(req, res) => {
 });
 
 
-
-
-
-
-
-
-
-
   // create a new tag
 router.post('/', async(req, res) => {
   try {
@@ -59,11 +51,7 @@ router.post('/', async(req, res) => {
 } catch (err) {
     res.status(400).json(err);
 }
-
 });
-
-
-
 
 
   // update a tag's name by its `id` value
@@ -101,12 +89,12 @@ router.put('/:id', async(req, res) => {
 
   router.delete("/:id", async (req, res) => {
     try {
-      const ProductData = await ProductTag.destroy({
+      const tagData = await Tag.destroy({
         where: {
           id: req.params.id,
         },
       });
-      if (!ProductData) {
+      if (!tagData) {
         res.status(404).json({ message: "Tag with this ID doesn't exist!" });
         return;
       }
