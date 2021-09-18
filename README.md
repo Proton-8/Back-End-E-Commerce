@@ -124,14 +124,20 @@ Your database should contain the following four models, including the requiremen
 
 
 
-
-
-<h2>  Startup and GET ALL Demo : </h2>
-
-<img src="Develop\Gifs\Start-Get All.gif " alt="Startup and all three GET All DEMO GIF">
-
-</p>
-<h2>Get Singles Demo</h2>
-
-<img src="Develop\Gifs\Get One.gif" alt=" DEMO screenshot">
 <p>
+<h2>  Database setup Demo : </h2>
+
+<img src="Develop\Gifs\Database Setup.gif " alt="Main database setup">
+</p>
+<p>
+<h2>  Seeding the Database Demo : </h2>
+<img src="Develop\Gifs\Seeding Database.gif " alt="Seeding the database demo">
+</p>
+<p>
+<h2>  Startup and GET ALL Demo : </h2>
+<img src="Develop\Gifs\Start-Get All.gif " alt="Startup and all three GET All DEMO GIF">
+</p>
+<p>
+<h2>Get Singles Demo</h2>
+<img src="Develop\Gifs\Get One.gif" alt=" DEMO screenshot">
+</p>
